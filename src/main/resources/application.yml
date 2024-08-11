@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: ${POSTGRES_USER}
+    username: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
+  flyway:
+    sql-migration-separator: __
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    sql-migration-prefix: V
+    repeatable-sql-migration-prefix: R
+    url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
+    sql-migration-suffixes: .sql
+  jpa:
+    show-sql: 'true'
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+server:
+  servlet:
+    session:
+      cookie:
+        secure: 'true'
+  port: '8081'
+
+external:
+  url: https://api.geointellect.com
+  api-key-name: test_api_kz_1
+  api-key-value: 53500775-c1ac-4a8f-9790-2170fdb9c3b4
