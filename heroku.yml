@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: Dockerfile
+  heroku:
+    app: geo-intellect
+    stack: container
+
+run:
+  web: docker run
