@@ -1,16 +1,16 @@
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    password: ${POSTGRES_USER}
-    username: ${POSTGRES_PASSWORD}
-    url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
+    password: ${POSTGRES_USER:root}
+    username: ${POSTGRES_PASSWORD:root}
+    url: jdbc:postgresql://${POSTGRES_URL:db}:5432/${POSTGRES_DB:postgres}
   flyway:
     sql-migration-separator: __
-    user: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
+    user: ${POSTGRES_USER:root}
+    password: ${POSTGRES_PASSWORD:root}
     sql-migration-prefix: V
     repeatable-sql-migration-prefix: R
-    url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
+    url: jdbc:postgresql://${POSTGRES_URL:db}:5432/${POSTGRES_DB:postgres}
     sql-migration-suffixes: .sql
   jpa:
     show-sql: 'true'
