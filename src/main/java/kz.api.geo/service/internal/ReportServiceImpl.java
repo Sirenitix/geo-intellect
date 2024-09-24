@@ -1,9 +1,6 @@
 package kz.api.geo.service.internal;
 
-import kz.api.geo.dto.ReportCreateInRadiusParamDto;
-import kz.api.geo.dto.ReportDetailDto;
-import kz.api.geo.dto.ReportHistoryResult;
-import kz.api.geo.dto.ReportInRadiusDto;
+import kz.api.geo.dto.*;
 import kz.api.geo.entity.UserToReport;
 import kz.api.geo.external.GeoIntellectFeignClient;
 import kz.api.geo.repo.UserRepository;
@@ -11,6 +8,7 @@ import kz.api.geo.repo.UserToReportRepository;
 import kz.api.geo.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -71,7 +69,12 @@ public class ReportServiceImpl implements ReportService {
                 .toList();
     }
 
-    public ReportDetailDto getReportDetail(String uid) {
+    public ResponseEntity<?> getReportDetail(String uid) {
         return geoIntellectFeignClient.getReportDetail(uid);
+    }
+
+    @Override
+    public ResponseEntity<?> getReportImage(String uid) {
+        return geoIntellectFeignClient.getReportImage(uid);
     }
 }

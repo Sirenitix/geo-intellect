@@ -1,12 +1,10 @@
 package kz.api.geo.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import kz.api.geo.dto.ReportCreateInRadiusParamDto;
-import kz.api.geo.dto.ReportDetailDto;
-import kz.api.geo.dto.ReportHistoryResult;
-import kz.api.geo.dto.ReportInRadiusDto;
+import kz.api.geo.dto.*;
 import kz.api.geo.service.ReportService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -39,7 +37,13 @@ public class ReportController {
 
     @Operation(summary = "Get report history detail")
     @RequestMapping(value = "report-detail", method = RequestMethod.POST)
-    public ReportDetailDto getReportDetail(@RequestParam String uid) {
+    public ResponseEntity<?> getReportDetail(@RequestParam String uid) {
         return reportService.getReportDetail(uid);
+    }
+
+    @Operation(summary = "Get report image")
+    @RequestMapping(value = "report-image", method = RequestMethod.POST)
+    public ResponseEntity<?> getReportImage(@RequestParam String uid) {
+        return reportService.getReportImage(uid);
     }
 }

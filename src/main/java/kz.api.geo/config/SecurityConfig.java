@@ -50,7 +50,7 @@ public class SecurityConfig {
 
 
     @Bean
-    protected SecurityFilterChain SecurityFilterChain(HttpSecurity http, AuthenticationManager auth) throws Exception {
+    protected SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .cors()
                 .and()
@@ -61,6 +61,8 @@ public class SecurityConfig {
                 .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/generate-token").permitAll()
                 .and()
                 .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/password").permitAll()
+                .and()
+                .authorizeRequests().antMatchers(HttpMethod.POST, "/layers/list").permitAll()
                 .and()
                 .addFilterBefore(new CustomAuthorizationFilter(),
                         UsernamePasswordAuthenticationFilter.class);

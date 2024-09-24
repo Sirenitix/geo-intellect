@@ -1,14 +1,10 @@
 package kz.api.geo.external;
 
 import kz.api.geo.config.FeignClientConfiguration;
-import kz.api.geo.dto.LayersDto;
-import kz.api.geo.dto.LayerObjectsInRadiusDto;
-import kz.api.geo.dto.LayerObjectCountDto;
-import kz.api.geo.dto.ReportInRadiusDto;
-import kz.api.geo.dto.ReportHistoryDto;
-import kz.api.geo.dto.ReportDetailDto;
+import kz.api.geo.dto.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,21 +17,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface GeoIntellectFeignClient {
 
     @RequestMapping(value = "layers/list", method = RequestMethod.POST)
-    LayersDto getLayersList();
+    ResponseEntity<?> getLayersList();
 
     @RequestMapping(
             value = "glayer/objects_count",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
     )
-    LayerObjectCountDto getLayerObjectsCount(@RequestParam("layerid") Integer layerId);
+    ResponseEntity<?> getLayerObjectsCount(@RequestParam("layerid") Integer layerId);
 
 
     @RequestMapping(
             value = "glayer/objects_in_radius",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    LayerObjectsInRadiusDto getLayerObjectsInRadius(
+    ResponseEntity<?> getLayerObjectsInRadius(
             @RequestParam("layerid") Integer layerId,
             @RequestParam("xlon") Integer longitude,
             @RequestParam("ylat") Integer latitude,
@@ -61,5 +57,11 @@ public interface GeoIntellectFeignClient {
             value = "reports/get_details",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    ReportDetailDto getReportDetail(@RequestParam("uid") String uid);
+    ResponseEntity<?> getReportDetail(@RequestParam("uid") String uid);
+
+    @RequestMapping(
+            value = "reports/get_image",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    ResponseEntity<?> getReportImage(@RequestParam("uid") String uid);
 }

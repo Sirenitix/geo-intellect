@@ -1,9 +1,7 @@
 package kz.api.geo.service;
 
-import kz.api.geo.dto.ReportCreateInRadiusParamDto;
-import kz.api.geo.dto.ReportDetailDto;
-import kz.api.geo.dto.ReportHistoryResult;
-import kz.api.geo.dto.ReportInRadiusDto;
+import kz.api.geo.dto.*;
+import org.springframework.http.ResponseEntity;
 
 import java.security.Principal;
 import java.util.List;
@@ -16,5 +14,7 @@ public interface ReportService {
 
     List<ReportHistoryResult> getReportHistory(Principal principal);
 
-    ReportDetailDto getReportDetail(String uid);
+    ResponseEntity<?> getReportDetail(String uid);
+
+    ResponseEntity<?> getReportImage(String uid);
 }
