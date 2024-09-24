@@ -1,15 +1,16 @@
 spring:
   datasource:
-    password: ${SPRING_DATASOURCE_USERNAME:root}
-    username: ${SPRING_DATASOURCE_PASSWORD:root}
-    url: jdbc:postgresql://${SPRING_DATASOURCE_URL}:5432/${POSTGRES_DB}?user=${SPRING_DATASOURCE_USERNAME}&password=${SPRING_DATASOURCE_PASSWORD}&sslmode=require
+    driverClassName: org.postgresql.Driver
+    password: ${POSTGRES_USER:root}
+    username: ${POSTGRES_PASSWORD:root}
+    url: jdbc:postgresql://${POSTGRES_URL:db}:5432/${POSTGRES_DB:postgres}
   flyway:
     sql-migration-separator: __
-    user: ${SPRING_DATASOURCE_USERNAME:root}
-    password: ${SPRING_DATASOURCE_PASSWORD:root}
+    user: ${POSTGRES_USER:root}
+    password: ${POSTGRES_PASSWORD:root}
     sql-migration-prefix: V
     repeatable-sql-migration-prefix: R
-    url: jdbc:postgresql://${SPRING_DATASOURCE_URL}:5432/${POSTGRES_DB}?user=${SPRING_DATASOURCE_USERNAME}&password=${SPRING_DATASOURCE_PASSWORD}&sslmode=require
+    url: jdbc:postgresql://${POSTGRES_URL:db}:5432/${POSTGRES_DB:postgres}
     sql-migration-suffixes: .sql
   jpa:
     show-sql: 'true'

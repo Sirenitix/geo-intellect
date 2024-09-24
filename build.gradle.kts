@@ -16,7 +16,6 @@ dependencies {
     api(libs.javax.annotation.javax.annotation.api)
     api(libs.org.projectlombok.lombok)
     api(libs.org.apache.commons.commons.lang3)
-    api("org.hibernate:hibernate-core:5.4.23.Final")
     api(libs.org.springframework.boot.spring.boot.starter.web)
     api(libs.org.springframework.spring.jdbc)
     api(libs.org.springframework.boot.spring.boot.starter.data.jpa)
