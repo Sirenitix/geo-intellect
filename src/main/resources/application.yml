@@ -22,7 +22,7 @@ server:
     session:
       cookie:
         secure: 'true'
-  port: ${PORT}
+  port: '8081'
 
 external:
   url: https://api.geointellect.com
