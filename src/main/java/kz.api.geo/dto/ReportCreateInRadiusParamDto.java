@@ -3,6 +3,8 @@ package kz.api.geo.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import javax.validation.constraints.Max;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReportCreateInRadiusParamDto {
@@ -13,7 +15,7 @@ public class ReportCreateInRadiusParamDto {
 
     private Integer latitude;
 
-    private Integer radiusSize;
+    @Max(value = 10000, message = "Максимальное значение радиуса 10000") private Integer radiusSize;
 
     private String name;
 }

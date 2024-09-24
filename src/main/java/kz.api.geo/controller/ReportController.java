@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ReportController {
     @Operation(summary = "Create report in radius")
     @RequestMapping(value = "create-in-radius", method = RequestMethod.POST)
     public ReportInRadiusDto createReportInRadius(
-            @RequestBody ReportCreateInRadiusParamDto createInRadiusParamDto,
+            @Valid @RequestBody ReportCreateInRadiusParamDto createInRadiusParamDto,
             Principal principal
     ) {
         return reportService.createReportInRadius(
