@@ -4,24 +4,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ReportInRadiusDto {
-    private String status;
-    private Boolean success;
-    private String message;
-    private String details;
-    @JsonProperty("results")
-    private ReportInRadiusResults reportInRadiusResults;
+class ReportInRadiusAlias {
+    private String language;
+    private String alias;
 }
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-class ReportAlias {
-    private String language;
-    private String alias;
+class Attributes {
+    private String name;
+    private String address;
+    @JsonProperty("Subgroup2")
+    private String subgroup2;
+    private Double geodist_007;
 }
 
 @Data
@@ -33,46 +32,54 @@ class DemographicStats {
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Layer {
     @JsonProperty("LayerId")
-    private int layerId;
+    private Integer layerId;
     @JsonProperty("LayerName")
     private String layerName;
     @JsonProperty("LayerUid")
-    private Object layerUid;
+    private java.lang.Object layerUid;
     @JsonProperty("Editable")
-    private Boolean editable;
+    private boolean editable;
     @JsonProperty("LayerSchema")
-    private List<LayerSchema> layerSchema;
+    private ArrayList<LayerSchema> layerSchema;
     @JsonProperty("Count")
-    private int count;
+    private Integer count;
     @JsonProperty("Objects")
-    private List<Object> objects;
+    private ArrayList<ReportObject> objects;
     @JsonProperty("IsPay")
-    private int isPay;
+    private Integer isPay;
 }
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 class LayerSchema {
     private String name;
-    private List<ReportAlias> aliases;
+    private ArrayList<ReportInRadiusAlias> aliases;
 }
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Params {
+class ReportObject {
+    @JsonProperty("Id")
+    private Integer id;
+    @JsonProperty("Uid")
+    private java.lang.Object uid;
+    @JsonProperty("Geom")
+    private java.lang.Object geom;
+    @JsonProperty("Attributes")
+    private Attributes attributes;
 }
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Point {
-    private List<Double> coordinates;
+    private ArrayList<Double> coordinates;
     private String type;
 }
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Polygon {
-    private List<List<List<Double>>> coordinates;
+    private ArrayList<ArrayList<ArrayList<Double>>> coordinates;
     private String type;
 }
 
@@ -80,13 +87,13 @@ class Polygon {
 @JsonIgnoreProperties(ignoreUnknown = true)
 class ReportContent {
     @JsonProperty("Stats")
-    private List<Stat> stats;
+    private ArrayList<Stat> stats;
     @JsonProperty("Layers")
-    private List<Layer> layers;
+    private ArrayList<Layer> layers;
     @JsonProperty("Values")
-    private List<Object> values;
+    private ArrayList<java.lang.Object> values;
     @JsonProperty("ErrorMessages")
-    private List<Object> errorMessages;
+    private ArrayList<java.lang.Object> errorMessages;
     @JsonProperty("DemographicStats")
     private DemographicStats demographicStats;
 }
@@ -97,7 +104,7 @@ class ReportMetadata {
     @JsonProperty("ToolName")
     private String toolName;
     @JsonProperty("Location")
-    private Object location;
+    private java.lang.Object location;
     @JsonProperty("Area")
     private Double area;
     @JsonProperty("Perimeter")
@@ -105,13 +112,23 @@ class ReportMetadata {
     @JsonProperty("Buffer")
     private Double buffer;
     @JsonProperty("Dbg")
-    private Object dbg;
+    private java.lang.Object dbg;
     @JsonProperty("Details")
-    private Object details;
+    private java.lang.Object details;
     @JsonProperty("Values")
-    private Object values;
+    private java.lang.Object values;
     @JsonProperty("Params")
-    private Params params;
+    private java.lang.Object params;
+}
+
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ReportInRadiusDto {
+    private String status;
+    private Boolean success;
+    private String message;
+    private String details;
+    private ReportInRadiusResults results;
 }
 
 @Data

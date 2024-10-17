@@ -48,7 +48,7 @@ public class ReportInRadiusResults {
     @JsonProperty("Login")
     private String login;
     @JsonProperty("UserId")
-    private int userId;
+    private Integer userId;
     @JsonProperty("SharedToken")
     private String sharedToken;
 }

@@ -3,15 +3,17 @@ package kz.api.geo.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LayerObjectsInRadiusParamDto {
 
     private Integer layerId;
 
-    private Integer longitude;
+    private BigDecimal longitude;
 
-    private Integer latitude;
+    private BigDecimal latitude;
 
     private Integer radiusSize;
 }

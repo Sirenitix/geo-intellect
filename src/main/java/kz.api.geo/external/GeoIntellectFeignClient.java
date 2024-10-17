@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
+
 @FeignClient(
         value = "geo-intellect",
         url = "${external.url}",
@@ -33,8 +35,8 @@ public interface GeoIntellectFeignClient {
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     ResponseEntity<?> getLayerObjectsInRadius(
             @RequestParam("layerid") Integer layerId,
-            @RequestParam("xlon") Integer longitude,
-            @RequestParam("ylat") Integer latitude,
+            @RequestParam("xlon") BigDecimal longitude,
+            @RequestParam("ylat") BigDecimal latitude,
             @RequestParam("size") Integer size
     );
 
@@ -45,8 +47,8 @@ public interface GeoIntellectFeignClient {
     ReportInRadiusDto createReportInRadius(
             @RequestParam("name") String name,
             @RequestParam("layerid") Integer layerId,
-            @RequestParam("xlon") Integer longitude,
-            @RequestParam("ylat") Integer latitude,
+            @RequestParam("xlon") BigDecimal longitude,
+            @RequestParam("ylat") BigDecimal latitude,
             @RequestParam("size") Integer size
     );
 

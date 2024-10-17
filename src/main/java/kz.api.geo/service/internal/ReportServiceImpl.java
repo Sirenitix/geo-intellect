@@ -36,13 +36,15 @@ public class ReportServiceImpl implements ReportService {
 
         );
 
+
+
         var user = userRepository.findByUsername(principal.getName()).orElseThrow();
 
 
         userToReportRepository.save(
                 UserToReport.builder()
                         .userId(user.getId())
-                        .reportId(reportInRadius.getReportInRadiusResults().getUid())
+                        .reportId(reportInRadius.getResults().getUid())
                         .build()
         );
 
