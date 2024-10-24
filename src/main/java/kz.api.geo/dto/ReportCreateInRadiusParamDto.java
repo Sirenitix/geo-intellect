@@ -5,12 +5,13 @@ import lombok.Data;
 
 import javax.validation.constraints.Max;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReportCreateInRadiusParamDto {
 
-    private Integer layerId;
+    private List<Integer> layerIds;
 
     private BigDecimal longitude;
 

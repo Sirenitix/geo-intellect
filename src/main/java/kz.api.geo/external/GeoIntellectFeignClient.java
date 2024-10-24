@@ -46,7 +46,7 @@ public interface GeoIntellectFeignClient {
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     ReportInRadiusDto createReportInRadius(
             @RequestParam("name") String name,
-            @RequestParam("layerid") Integer layerId,
+            @RequestParam("layerid") String layerId,
             @RequestParam("xlon") BigDecimal longitude,
             @RequestParam("ylat") BigDecimal latitude,
             @RequestParam("size") Integer size

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -29,7 +30,8 @@ public class ReportServiceImpl implements ReportService {
     ) {
         var reportInRadius = geoIntellectFeignClient.createReportInRadius(
                 createInRadiusParamDto.getName(),
-                createInRadiusParamDto.getLayerId(),
+                createInRadiusParamDto.getLayerIds()
+                        .stream().map(String::valueOf).collect(Collectors.joining(",")),
                 createInRadiusParamDto.getLongitude(),
                 createInRadiusParamDto.getLatitude(),
                 createInRadiusParamDto.getRadiusSize()
